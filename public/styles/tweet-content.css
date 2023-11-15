@@ -1,0 +1,97 @@
+/* Styles for Tweet Content */
+
+/* Include Font Awesome CSS for the icons */
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
+
+
+.tweets-container {
+  width: 100%;
+  /* Vertical space between the form and this container, adjust as needed */
+  margin-top: 5px;
+  height: fit-content;
+}
+
+.tweet-post > header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.tweet-post .avatar img {
+  width: 150px;
+  height: 150px;
+  background-color: transparent;
+}
+
+.tweet-post .username {
+  margin-left: auto;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+  color: rgba(119, 112, 112, 0.52);
+  font-size: 20px;
+}
+
+.tweet-post {
+  background-color: #f4f1ec; 
+  padding: 25px; /* Spacing inside the tweet */
+  margin-bottom: 15px; /* Spacing between tweets */
+  /* Add a border or shadow if needed, etc. */
+  border: 3px solid #555;
+  
+}
+
+.tweet-content {
+  padding: 10px;
+  background-color: #f4f1ec;
+  margin-top: 10px;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+}
+
+.tweet-content p {
+  margin: 2;
+  font-size: 25px;
+  line-height: 1.5;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+
+}
+/* Styles for Tweet Footer */
+.tweet-post footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* This will align the items at the bottom */
+  padding-top: 15px;
+  font-size: 15px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+}
+
+/* Styles for Tweet Footer Icons */
+.icons {
+  display: flex;
+  gap: 13px;
+}
+
+.icons i {
+  color: #4056A1;
+  cursor: pointer;
+}
+
+/* Hover Styles */
+.tweet-post:hover {
+  /* Adjust box-shadow for a more prominent effect */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3), 0 10px 20px rgba(0, 0, 0, 0.45);
+  /* Transition for smooth shadow effect */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+
+.icons i:hover {
+  color: #f60404; /* Icon color changes on hover */
+  transition: color 0.3s; /* Smooth transition for color change */
+}
+

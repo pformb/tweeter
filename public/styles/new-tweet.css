@@ -1,0 +1,68 @@
+
+.new-tweet {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.new-tweet form {
+  width: 100%;
+}
+
+.new-tweet label {
+  display: block;
+  width: 1300px; 
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+}
+
+.new-tweet textarea {
+  width: 1300px; 
+  padding: 8px;
+  margin-bottom: 10px;
+  background-color: #f4f1ec;
+  border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-bottom-width: 3px;
+}
+
+.new-tweet textarea:focus {
+  outline: none; /* Remove the outline when the textarea is in focus */
+
+}
+
+
+.new-tweet button {
+  background-color: #4056A1;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Bungee', sans-serif;
+  align-self: flex-start;
+  margin: 0;
+}
+
+.new-tweet .counter {
+  font-family: 'Bungee', sans-serif;
+  font-size: 21px;
+  margin-top: 8px;
+  color: #555; /* Default color */
+  align-self: flex-end;
+  margin: 0;
+}
+
+.new-tweet .counter.negative {
+  color: red; /* Color when it goes negative */
+}
+
+
+.new-tweet .tweetsubmitcounter {
+  display: flex;
+  justify-content: space-between;
+}

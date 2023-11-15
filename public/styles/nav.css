@@ -1,0 +1,54 @@
+/* styles/nav.css */
+
+body {
+  margin: 0;
+  font-family: 'Bungee', sans-serif;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 120px; 
+  background-color: #4056A1;
+  color: #FFFFFF;
+  padding: 0 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+  font-size: 24px; 
+}
+
+span.write-word,
+span.write-tweet,
+span.tweeter-word {
+  white-space: nowrap; 
+}
+
+span.write-word {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+}
+
+span.write-tweet {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 300;
+}
+
+span.tweeter-word {
+  font-family: 'Bungee', sans-serif;
+  font-size: 40px
+}
+
+.write-tweet-container {
+  text-align: center; 
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+}
+
+.icon-container {
+  margin-top: 5px; 
+}
