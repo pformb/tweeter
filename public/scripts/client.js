@@ -1,52 +1,16 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
-
-
-// AJAX POST request in client.js that sends the form data to the server
 $(document).ready(function () {
   
-  $("#tweet-form").submit(function (event) {
-    // Prevent the default form submission behavior
-    console.log("Form submitted");
-
-    event.preventDefault();
-
-    console.log("Default behavior prevented");
-    
-    // Serialize the form data into a query string
-    let formData = $(this).serialize();
-
-    // Use jQuery AJAX to submit a POST request
-    $.ajax({
-      type: "POST",
-      url: "/tweets",
-      data: formData,
-      success: function (response) {
-        // Handle the success response from the server if needed
-        console.log("Data sent successfully");
-      },
-      error: function (error) {
-        // Handle the error response from the server if needed
-        console.error("Error sending data:", error);
-      },
-    });
-  });
-});
-
-$(document).ready(function () {
-  // Define the renderTweets function (assuming you already have this function)
-
+  // Function to render an array of tweets in the tweets-container
   function renderTweets(tweets) {
+    const $tweetsContainer = $(".tweets-container"); // Select the container
+  
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
-      $("#tweets-container").append($tweet);
+      $tweetsContainer.prepend($tweet); // Append to the container
     }
   }
-
-  // Define the loadTweets function
+  
+  // Function to load tweets
   function loadTweets() {
     // Make an AJAX GET request to fetch tweets
     $.ajax({
@@ -65,96 +29,107 @@ $(document).ready(function () {
     });
   }
 
+  // Function to create a tweet element
+  function createTweetElement(tweetData) {
+    // Format the tweet's creation date using timeago
+    const formattedDate = timeago.format(new Date(tweetData.created_at));
+  
+    // Create the tweet element
+    const $tweet = $(`
+      <article class="tweet-post">
+        <header>
+          <div class="avatar">
+            <img src="${tweetData.user.avatars}" alt="Profile Image">
+          </div>
+          <div class="name">
+            <h2>${tweetData.user.name}</h2>
+          </div>
+          <div class="username">
+            <h2>${tweetData.user.handle}</h2>
+          </div>
+        </header>
+        <div class="tweet-content">
+          <p>${tweetData.content.text}</p>
+        </div>
+        <footer>
+          <div class="date">${formattedDate}</div>
+          <div class="icons">
+            <i class="far fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="far fa-heart"></i>
+          </div>
+        </footer>
+      </article>
+    `);
+  
+    return $tweet;
+  }
+  
+
+  // Validation function
+  function validateTweet(formData) {
+    // Extract tweet text from the form data
+    const tweetText = decodeURIComponent(formData.split("=")[1]);
+
+    // Check if tweet text is empty
+    if (!tweetText.trim()) {
+      alert("Error: Tweet content cannot be empty.");
+      return false;
+    }
+
+    // Check if tweet text exceeds the character limit (140 characters)
+    if (tweetText.length > 140) {
+      alert("Error: Tweet content exceeds the 140 character limit.");
+      return false;
+    }
+
+    // Validation passed
+    return true;
+  }
+
+  // Form submission handler
+  $("#tweet-form").submit(function (event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+
+    // Serialize the form data into a query string
+    let formData = $(this).serialize();
+
+    // Validate the tweet content
+    if (!validateTweet(formData)) {
+      return; // Exit the function if validation fails
+    }
+
+    // Use jQuery AJAX to submit a POST request
+    $.ajax({
+      type: "POST",
+      url: "/tweets",
+      data: formData,
+      success: function (response) {
+        // Check if the response contains an error message
+        if (response.error) {
+          // Display an alert for the error message
+          alert("Error: " + response.error);
+        } else {
+          // Fetch and render tweets again after successful submission
+          loadTweets();
+          console.log("Data sent successfully");
+
+          // Clear the textarea
+        $("#tweet-text").val('');
+
+        // Reset the character counter
+        $(".counter").text('140');
+
+        }
+      },
+      error: function (error) {
+        // Handle the error response from the server if needed
+        console.error("Error sending data:", error);
+      },
+    });
+  });
+
   // Call loadTweets function after its definition
   loadTweets();
 });
-
-
-
-
-function createTweetElement(tweetData) {
-  const $tweet = $(`
-    <article class="tweet">
-      <header>
-        <div class="user-info">
-          <img class="avatar" src="${tweetData.user.avatars}" alt="User Avatar">
-          <span class="user-name">${tweetData.user.name}</span>
-        </div>
-        <span class="user-handle">${tweetData.user.handle}</span>
-      </header>
-      <div class="tweet-content">
-        <p>${tweetData.content.text}</p>
-      </div>
-      <footer>
-        <span class="tweet-time">${timeago.format(tweetData.created_at)}</span>
-        <div class="tweet-actions">
-          <!-- Add any additional tweet actions here if needed -->
-        </div>
-      </footer>
-    </article>
-  `);
-
-  return $tweet;
-}
-
-// // Test / driver code (temporary)
-// const tweetData = {
-//   user: {
-//     name: "Newton",
-//     avatars: "https://i.imgur.com/73hZDYK.png",
-//     handle: "@SirIsaac",
-//   },
-//   content: {
-//     text: "If I have seen further it is by standing on the shoulders of giants",
-//   },
-//   created_at: 1461116232227,
-// };
-
-// const $tweet = createTweetElement(tweetData);
-
-// Test / driver code (temporary)
-// console.log($tweet);
-// $("#tweets-container").append($tweet);
-
-/* ---------------------------------------------------------- */
-
-// Function to render an array of tweets in the tweets-container
-// const renderTweets = function (tweets) {
-//   for (const tweet of tweets) {
-//     const $tweet = createTweetElement(tweet);
-//     $("#tweets-container").append($tweet);
-//   }
-// };
-
-// // Test / driver code (temporary)
-
-// const data = [
-//   {
-//     user: {
-//       name: "Newton",
-//       avatars: "https://i.imgur.com/73hZDYK.png",
-//       handle: "@SirIsaac",
-//     },
-//     content: {
-//       text: "If I have seen further it is by standing on the shoulders of giants",
-//     },
-//     created_at: 1461116232227,
-//   },
-//   {
-//     user: {
-//       name: "Descartes",
-//       avatars: "https://i.imgur.com/nlhLi3I.png",
-//       handle: "@rd",
-//     },
-//     content: {
-//       text: "Je pense , donc je suis",
-//     },
-//     created_at: 1461113959088,
-//   },
-// ];
-
-// Render the test data
-// renderTweets(data);
-
-
-
