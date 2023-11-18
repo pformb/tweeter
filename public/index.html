@@ -20,9 +20,8 @@
   <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
 
   <!-- External FontAwesome CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
   <!-- App-specific CSS -->
 
@@ -73,6 +72,13 @@
 
   <!-- Page-specific (main) content here -->
   <main class="main-container">
+
+<!-- Error message container -->
+<div class="error-message" style="display: none;">
+  <i class="fas fa-exclamation-triangle" style="color: #ff0000;"></i>
+  <p id="error-text"></p>
+  <i class="fas fa-exclamation-triangle" style="color: #ff0000;"></i>
+</div>
 
 <!-- Container for the new tweet form -->
     <section class="new-tweet">

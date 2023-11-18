@@ -66,3 +66,17 @@
   display: flex;
   justify-content: space-between;
 }
+
+.error-message {
+  color: #ff0000; /* Red color for error messages */
+  font-size: 50px;
+  margin-top: 12px; /* Adjust as needed */
+  border: 8px solid red;
+  padding: 15px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+}
+
+.error-message i {
+  margin: 0 5px; /* Add margin to space out the icons */
+}
