@@ -5,6 +5,7 @@
   align-items: center;
   padding: 20px;
   box-sizing: border-box;
+  width: 100%; 
 }
 
 .new-tweet form {
@@ -13,13 +14,12 @@
 
 .new-tweet label {
   display: block;
-  width: 1300px; 
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
 }
 
 .new-tweet textarea {
-  width: 1300px; 
+  width: 100%;
   padding: 8px;
   margin-bottom: 10px;
   background-color: #f4f1ec;
@@ -69,7 +69,7 @@
 
 .error-message {
   color: #ff0000; /* Red color for error messages */
-  font-size: 50px;
+  font-size: 40px;
   margin-top: 12px; /* Adjust as needed */
   border: 8px solid red;
   padding: 15px;
@@ -77,6 +77,21 @@
   font-weight: 600;
 }
 
-.error-message i {
-  margin: 0 5px; /* Add margin to space out the icons */
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .new-tweet {
+    font-size: 18px; /* Adjust font size for smaller screens */
+    width: 100%; /* Full width for smaller screens */
+  }
+  .new-tweet .counter {
+    font-size: 15px;
+  }
+  .new-tweet button {
+    size: 10%;
+  }
 }
+
+/* For screens between 768px and 1024px
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 20px; /* Adjust font size for medium-sized screens */

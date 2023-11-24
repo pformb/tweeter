@@ -22,6 +22,7 @@
  */
 
 body {
+  width: 100%;
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
@@ -29,7 +30,7 @@ body {
 }
 
 main {
-  width: 90%;
+  width: 100%;
   margin: 0 auto; /* Center align to the body */
   background-color: #f4f1ec; /* Same background color as the body */
   color: #545149;
@@ -38,9 +39,27 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-right: 50px;
+  padding-left: 200px;
 }
 
+.body-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  padding: 140px 5px 0px 150px;
+}
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+/* Responsive Design */
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  .body-container {
+      flex-direction: column;
+      align-items: center;
+      padding: 0px;
+  }
+  main {
+    padding: 0px 60px 0px 60px;
+  }
+}

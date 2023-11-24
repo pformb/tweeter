@@ -52,3 +52,11 @@ span.tweeter-word {
 .icon-container {
   margin-top: 5px; 
 }
+
+/* For screens smaller than 768px */
+@media (max-width: 768px) {
+  nav {
+    background-color: transparent;
+    position: absolute;
+  }
+}
