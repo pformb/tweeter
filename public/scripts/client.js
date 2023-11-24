@@ -15,7 +15,7 @@ $(document).ready(function () {
     // Make an AJAX GET request to fetch tweets
     $.ajax({
       type: "GET",
-      url: "http://localhost:5000/tweets",
+      url: "/tweets",
       dataType: "json", // Specify that you expect JSON response
       success: function (tweets) {
         // Call renderTweets with the received tweets
