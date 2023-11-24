@@ -1,15 +1,17 @@
 $(document).ready(function () {
-  
   // Function to render an array of tweets in the tweets-container
   function renderTweets(tweets) {
     const $tweetsContainer = $(".tweets-container"); // Select the container
-  
+
+    // Clear the container before rendering new tweets
+    $tweetsContainer.empty();
+
     for (const tweet of tweets) {
       const $tweet = createTweetElement(tweet);
       $tweetsContainer.prepend($tweet); // Append to the container
     }
   }
-  
+
   // Function to load tweets
   function loadTweets() {
     // Make an AJAX GET request to fetch tweets
@@ -30,12 +32,12 @@ $(document).ready(function () {
   }
 
   // Function to create a tweet element
-function createTweetElement(tweetData) {
-  // Format the tweet's creation date using timeago
-  const formattedDate = timeago.format(new Date(tweetData.created_at));
+  function createTweetElement(tweetData) {
+    // Format the tweet's creation date using timeago
+    const formattedDate = timeago.format(new Date(tweetData.created_at));
 
-  // Create the tweet element using jQuery
-  const $tweet = $(`
+    // Create the tweet element using jQuery
+    const $tweet = $(`
     <article class="tweet-post">
       <header>
         <div class="avatar">
@@ -63,29 +65,33 @@ function createTweetElement(tweetData) {
     </article>
   `);
 
-  return $tweet;
-}
-
-// Validation function
-function validateTweet(formData) {
-  // Extract tweet text from the form data
-  const tweetText = decodeURIComponent(formData.split("=")[1]);
-
-  // Check if tweet text is empty
-  if (!tweetText.trim()) {
-    $(".error-message").text("Error: Tweet content cannot be empty.").slideDown();
-    return false;
+    return $tweet;
   }
 
-  // Check if tweet text exceeds the character limit (140 characters)
-  if (tweetText.length > 140) {
-    $(".error-message").text("Error: Tweet content exceeds the 140 character limit.").slideDown();
-    return false;
-  }
+  // Validation function
+  function validateTweet(formData) {
+    // Extract tweet text from the form data
+    const tweetText = decodeURIComponent(formData.split("=")[1]);
 
-  // Validation passed
-  return true;
-}
+    // Check if tweet text is empty
+    if (!tweetText.trim()) {
+      $(".error-message")
+        .text("Error: Tweet content cannot be empty.")
+        .slideDown();
+      return false;
+    }
+
+    // Check if tweet text exceeds the character limit (140 characters)
+    if (tweetText.length > 140) {
+      $(".error-message")
+        .text("Error: Tweet content exceeds the 140 character limit.")
+        .slideDown();
+      return false;
+    }
+
+    // Validation passed
+    return true;
+  }
 
   // Form submission handler
   $("#tweet-form").submit(function (event) {
@@ -101,7 +107,9 @@ function validateTweet(formData) {
     // Validate the tweet content
     if (!validateTweet(formData)) {
       // Display validation error message
-      $(".error-message").text("Error: Tweet content cannot be empty or exceed 140 characters.").slideDown();
+      $(".error-message")
+        .text("Error: Tweet content cannot be empty or exceed 140 characters.")
+        .slideDown();
       return; // Exit the function if validation fails
     }
 
@@ -114,18 +122,19 @@ function validateTweet(formData) {
         // Check if the response contains an error message
         if (response.error) {
           // Display an alert for the error message
-          $(".error-message").text("Error: " + response.error).slideDown();
+          $(".error-message")
+            .text("Error: " + response.error)
+            .slideDown();
         } else {
           // Fetch and render tweets again after successful submission
           loadTweets();
           console.log("Data sent successfully");
 
           // Clear the textarea
-        $("#tweet-text").val('');
+          $("#tweet-text").val("");
 
-        // Reset the character counter
-        $(".counter").text('140');
-
+          // Reset the character counter
+          $(".counter").text("140");
         }
       },
       error: function (error) {
