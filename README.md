@@ -3,7 +3,6 @@
 
 Tweeter is a simple, single-page Twitter clone.
 
-This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express back-end skills.
 
 ## Features
 
@@ -46,21 +45,27 @@ Open your web browser and navigate to http://localhost:5000
 If you'd like to contribute to Tweeter, please fork the repository and create a pull request. We welcome any contributions or bug fixes.
 
 ## License
+
 This project is open source and available.
 
 ## Acknowledgements
+
 This project has brought me knowledge and skills and I want to thank Lighthouse Labs for providing the mentorship through my education.
 
 ## Final Product
 
-!["Screenshot of URLs page"](https://github.com/pformb/tinyapp/blob/master/docs/urls-page.png?raw=true)
+!["Screenshot of main tweet page size big"](https://github.com/pformb/tweeter/blob/master/docs/tweeter-page-big.png?raw=true)
 
-!["Screenshot of Login page"](https://github.com/pformb/tinyapp/blob/master/docs/login-page.png?raw=true)
+!["Screenshot of main tweet page size small"](https://github.com/pformb/tweeter/blob/master/docs/tweeter-page-small.png?raw=true)
+
+!["Screenshot of Tweet Page big Size Error"](https://github.com/pformb/tweeter/blob/master/docs/tweeter-error-big.png?raw=true)
 
 
-!["Screenshot of Registration page"](https://github.com/pformb/tinyapp/blob/master/docs/registration-page.png?raw=true)
+!["Screenshot of Tweet Page small Size Error"](https://github.com/pformb/tweeter/blob/master/docs/tweeter-error-small.png?raw=true)
 
-!["Screenshot of Create URL page"](https://github.com/pformb/tinyapp/blob/master/docs/new-url-page.png?raw=true)
+!["Screenshot of Tweet Box"](https://github.com/pformb/tweeter/blob/master/docs/tweet-box-shadow.png?raw=true)
 
-### Happy URL Shortening!
+
+
+### Happy Tweeting!
 
